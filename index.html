@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Campus Event Manager — a cinematic student portal for events, attendance, duty leave and certificates.">
+<title>Campus Event Manager — CUIM</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+:root{
+  --bg:#030405;--panel:#0a0d10;--panel2:#0e1216;--navy:#1b2a5e;
+  --line:rgba(255,255,255,.11);--line2:rgba(255,255,255,.06);
+  --text:#f4f5f7;--muted:#8e96a3;--soft:#c8cdd4;--crimson:#c8102e;
+  --green:#1e8e59;--amber:#f59e0b;--red:#d84242;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none} button{font:inherit}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;opacity:.95}
+.hero{min-height:100vh;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 30%,#111823 0%,#050608 42%,#000 80%)}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.35),transparent 45%,rgba(0,0,0,.3));pointer-events:none}
+.nav{position:relative;z-index:5;max-width:1240px;margin:auto;padding:26px 30px;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:12px;font-family:"Space Grotesk";font-weight:700;letter-spacing:-.02em}
+.brand-mark{width:31px;height:31px;border:1px solid #b8bec7;border-radius:8px;display:grid;place-items:center;font-size:11px;box-shadow:0 0 25px rgba(255,255,255,.08)}
+.navlinks{display:flex;gap:26px;color:#a9b0ba;font-size:13px}.navlinks a:hover{color:white}
+.pill{border:1px solid var(--line);background:rgba(255,255,255,.035);padding:10px 15px;border-radius:999px;font-size:12px;color:#d9dde3}
+.hero-content{position:relative;z-index:4;max-width:1240px;margin:0 auto;min-height:calc(100vh - 85px);padding:12vh 30px 90px;display:flex;align-items:center}
+.hero-copy{max-width:720px}
+.eyebrow{display:flex;align-items:center;gap:10px;color:#aeb5be;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
+.eyebrow i{width:28px;height:1px;background:#8e949d}
+h1{font-family:"Space Grotesk";font-size:clamp(54px,8vw,108px);line-height:.91;letter-spacing:-.065em;margin:0 0 25px;font-weight:600}
+h1 span{display:block;color:#a9afb8}
+.lead{font-size:17px;line-height:1.7;color:#aeb5be;max-width:650px}
+.cta-row{display:flex;gap:12px;margin-top:32px}.btn{border-radius:10px;padding:14px 19px;border:1px solid var(--line);cursor:pointer;transition:.25s;position:relative;overflow:hidden}
+.btn.primary{background:#f4f5f7;color:#050607;border-color:#fff}.btn.secondary{background:rgba(255,255,255,.04);color:#f1f2f4}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(0,0,0,.35)}
+.hero-note{margin-top:54px;display:flex;gap:22px;color:#747d88;font-size:11px}.hero-note b{color:#b9c0c8;font-weight:500}
+section{position:relative;max-width:1240px;margin:auto;padding:120px 30px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:45px}
+.kicker{font-size:11px;letter-spacing:.18em;color:#7f8792;text-transform:uppercase;margin-bottom:12px}.section-title{font:600 clamp(35px,5vw,62px)/1 "Space Grotesk";letter-spacing:-.045em;margin:0}.section-copy{color:#858e99;max-width:420px;line-height:1.7;font-size:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{position:relative;min-height:250px;padding:24px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));border-radius:15px;overflow:hidden;transform-style:preserve-3d;transition:transform .12s ease,box-shadow .3s,border-color .3s}
+.card:before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.14),transparent 30%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover:before{opacity:1}.card:hover{border-color:rgba(255,255,255,.24);box-shadow:0 28px 70px rgba(0,0,0,.45)}
+.card>*{position:relative;z-index:2;transform:translateZ(14px)}
+.icon{width:42px;height:42px;border:1px solid #444a52;border-radius:11px;display:grid;place-items:center;color:#d9dde2;font-size:15px;margin-bottom:55px;background:rgba(255,255,255,.025)}
+.card h3{font:600 22px "Space Grotesk";margin:0 0 10px}.card p{font-size:13px;line-height:1.6;color:#7e8792;margin:0}.tag{position:absolute;top:20px;right:20px;font-size:10px;color:#8d96a0;border:1px solid var(--line);padding:5px 8px;border-radius:999px}
+.card .arrow{position:absolute;right:22px;bottom:20px;color:#d4d8de}
+.workflow{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:stretch}
+.flow-panel{min-height:500px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,#090c10,#050608);padding:28px;position:relative;overflow:hidden}
+.flow-svg{width:100%;height:100%;min-height:440px}.flow-line{fill:none;stroke:#e9edf2;stroke-width:1.2;stroke-dasharray:4 8;opacity:.45}.node{fill:#11151a;stroke:#b9bec6;stroke-width:1}.node.active{fill:#fff;stroke:#fff}.node-label{fill:#dfe3e8;font:12px Inter}
+.timeline{display:flex;flex-direction:column;gap:11px}.event{display:grid;grid-template-columns:80px 1fr auto;align-items:center;padding:15px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025);transition:.25s}.event:hover{background:rgba(255,255,255,.055);transform:translateX(5px)}.date{font:600 12px "Space Grotesk";color:#d9dde2}.event strong{font-size:13px}.event small{display:block;color:#737d89;margin-top:4px}.status{font-size:10px;padding:5px 8px;border-radius:999px;border:1px solid var(--line);color:#adb4bd}.status.green{color:#75c69e;border-color:rgba(30,142,89,.35)}.status.red{color:#ed8d8d;border-color:rgba(216,66,66,.3)}
+.dashboard-wrap{background:#07090c;border:1px solid var(--line);border-radius:22px;padding:12px;box-shadow:0 35px 100px rgba(0,0,0,.55)}
+.dashboard{display:grid;grid-template-columns:215px 1fr;min-height:590px;border:1px solid var(--line2);border-radius:16px;overflow:hidden;background:#f4f6f8;color:#152033}
+.side{background:#10151c;color:#d8dce2;padding:18px 13px;display:flex;flex-direction:column}.side .brand{font-size:14px;padding:8px 8px 22px}.side nav{display:flex;flex-direction:column;gap:4px}.side button{border:0;background:transparent;color:#8f98a5;text-align:left;padding:11px 10px;border-radius:8px;cursor:pointer;font-size:12px}.side button.active,.side button:hover{background:#1a222d;color:white}.side-bottom{margin-top:auto;color:#67717d;font-size:10px;padding:10px}
+.main{padding:25px 27px;overflow:hidden}.dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:23px}.dash-top h3{margin:0;font:600 23px "Space Grotesk"}.avatar{width:32px;height:32px;border-radius:50%;background:#d8dde4;display:grid;place-items:center;font-size:11px;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{padding:15px;border:1px solid #e0e4e9;background:#fff;border-radius:10px}.stat span{font-size:10px;color:#7b8591}.stat strong{display:block;font:600 24px "Space Grotesk";margin-top:5px}.stat em{font-style:normal;font-size:9px;color:#1e8e59}
+.dash-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:11px;margin-top:11px}.dash-card{background:#fff;border:1px solid #e0e4e9;border-radius:10px;padding:17px}.dash-card h4{margin:0 0 14px;font:600 13px "Space Grotesk"}.bars{display:flex;align-items:end;height:170px;gap:9px}.bar{flex:1;background:#1b2a5e;border-radius:5px 5px 2px 2px;min-height:8px;opacity:.9}.bar:nth-child(2n){opacity:.55}.legend{display:flex;justify-content:space-between;color:#88919d;font-size:9px;margin-top:7px}
+.att{display:flex;flex-direction:column;gap:12px}.att-row{display:grid;grid-template-columns:1fr 80px 35px;gap:8px;align-items:center;font-size:10px}.track{height:5px;border-radius:99px;background:#e8ebee;overflow:hidden}.fill{height:100%;background:#1b2a5e;border-radius:99px}.danger .fill{background:#c8102e}
+.faq{max-width:850px;margin:auto}.faq-item{border-top:1px solid var(--line);padding:20px 0;cursor:pointer}.faq-q{display:flex;justify-content:space-between;font-size:15px}.faq-a{max-height:0;overflow:hidden;color:#818a95;line-height:1.7;font-size:13px;transition:max-height .4s,margin .4s}.faq-item.open .faq-a{max-height:120px;margin-top:12px}
+footer{border-top:1px solid var(--line);padding:35px 30px;color:#68717c;font-size:11px;text-align:center}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){.grid4{grid-template-columns:repeat(2,1fr)}.workflow{grid-template-columns:1fr}.section-head{display:block}.section-copy{margin-top:15px}.dashboard{grid-template-columns:1fr}.side{display:none}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.navlinks{display:none}.hero-content{padding-top:80px}.grid4{grid-template-columns:1fr}.hero-note{flex-direction:column;gap:8px}.event{grid-template-columns:60px 1fr}.event .status{display:none}.dash-grid{grid-template-columns:1fr}section{padding:80px 20px}.nav{padding:20px}.cta-row{flex-direction:column;align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+<canvas id="heroCanvas"></canvas>
+<nav class="nav">
+  <a class="brand" href="#top"><span class="brand-mark">CU</span> Campus Event Manager</a>
+  <div class="navlinks"><a href="#features">Features</a><a href="#workflow">How it works</a><a href="#portal">Portal</a><a href="#faq">FAQ</a></div>
+  <a class="pill" href="#portal">Open portal ↗</a>
+</nav>
+<div class="hero-content">
+  <div class="hero-copy reveal">
+    <div class="eyebrow"><i></i> Student operations · Chandigarh University</div>
+    <h1>Never Miss<br><span>an Event.</span><br>Never Miss Attendance.</h1>
+    <p class="lead">A focused campus command center for discovering university events, registering in seconds, planning lecture attendance, tracking Duty Leave and keeping every certificate in one place.</p>
+    <div class="cta-row"><a class="btn primary" href="#portal">Open Calendar</a><a class="btn secondary" href="#features">Explore the system</a></div>
+    <div class="hero-note"><span><b>01</b> Discover</span><span><b>02</b> Register</span><span><b>03</b> Plan</span><span><b>04</b> Attend</span><span><b>05</b> Certify</span></div>
+  </div>
+</div>
+</header>
+
+<main>
+<section id="features" class="reveal">
+  <div class="section-head"><div><div class="kicker">Selected works</div><h2 class="section-title">Built around the student day.</h2></div><p class="section-copy">Four practical modules turn scattered campus admin into one calm, predictable workflow.</p></div>
+  <div class="grid4">
+    <article class="card tilt"><span class="tag">01</span><div class="icon">◫</div><h3>Event Calendar</h3><p>See what is happening, when it happens, and what you have already registered for.</p><span class="arrow">↗</span></article>
+    <article class="card tilt"><span class="tag">02</span><div class="icon">✓</div><h3>Smart Registration</h3><p>Check seat availability, register, and keep a clean history of your participation.</p><span class="arrow">↗</span></article>
+    <article class="card tilt"><span class="tag">03</span><div class="icon">⌁</div><h3>Day Planner</h3><p>Turn your lecture timetable into a simple Attend / Apply DL decision timeline.</p><span class="arrow">↗</span></article>
+    <article class="card tilt"><span class="tag">04</span><div class="icon">▤</div><h3>DL & Attendance</h3><p>Watch attendance projections and quickly identify subjects that need attention.</p><span class="arrow">↗</span></article>
+  </div>
+</section>
+
+<section id="workflow" class="reveal">
+  <div class="section-head"><div><div class="kicker">Process</div><h2 class="section-title">Built on precision.<br>Planned with intent.</h2></div><p class="section-copy">The system connects discovery to action, so an event never becomes a missed attendance record.</p></div>
+  <div class="workflow">
+    <div class="flow-panel">
+      <svg class="flow-svg" viewBox="0 0 600 440" aria-label="Campus Event Manager workflow">
+        <defs><filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <path class="flow-line" d="M80 220 C160 90,210 90,300 220 S440 350,520 220" />
+        <path class="flow-line" d="M80 220 C180 350,220 350,300 220 S430 90,520 220" />
+        <g class="flow-node" data-step="Discover"><circle class="node" cx="80" cy="220" r="25"/><text class="node-label" x="80" y="270" text-anchor="middle">Discover</text></g>
+        <g class="flow-node" data-step="Register"><circle class="node" cx="190" cy="120" r="25"/><text class="node-label" x="190" y="80" text-anchor="middle">Register</text></g>
+        <g class="flow-node" data-step="Plan"><circle class="node" cx="300" cy="220" r="29"/><text class="node-label" x="300" y="278" text-anchor="middle">Day Plan</text></g>
+        <g class="flow-node" data-step="DL"><circle class="node" cx="410" cy="120" r="25"/><text class="node-label" x="410" y="80" text-anchor="middle">Apply DL</text></g>
+        <g class="flow-node" data-step="Attend"><circle class="node" cx="520" cy="220" r="25"/><text class="node-label" x="520" y="270" text-anchor="middle">Attend</text></g>
+        <g class="flow-node" data-step="Certify"><circle class="node" cx="410" cy="320" r="25"/><text class="node-label" x="410" y="370" text-anchor="middle">Certificate</text></g>
+      </svg>
+    </div>
+    <div class="flow-panel" style="padding:22px">
+      <div class="kicker">Upcoming</div><div class="timeline">
+        <div class="event"><div class="date">27 OCT</div><div><strong>CTF OPS 101: Boot Camp</strong><small>09:30 · Block A · CySecSphere</small></div><span class="status green">Registered</span></div>
+        <div class="event"><div class="date">29 OCT</div><div><strong>AI & Campus Futures</strong><small>13:00 · Auditorium · Open</small></div><span class="status">Register</span></div>
+        <div class="event"><div class="date">31 OCT</div><div><strong>Design Thinking Studio</strong><small>10:00 · Innovation Lab</small></div><span class="status">Register</span></div>
+        <div class="event"><div class="date">04 NOV</div><div><strong>NSS Community Day</strong><small>13:30 · Main Ground</small></div><span class="status red">DL needed</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portal" class="reveal">
+  <div class="section-head"><div><div class="kicker">Live concept</div><h2 class="section-title">Your campus,<br>at a glance.</h2></div><p class="section-copy">A dashboard-first interface designed for quick decisions between lectures—not another overloaded ERP screen.</p></div>
+  <div class="dashboard-wrap">
+    <div class="dashboard">
+      <aside class="side">
+        <div class="brand"><span class="brand-mark">CU</span> Campus</div>
+        <nav>
+          <button class="active" data-page="overview">Overview</button>
+          <button data-page="calendar">Event Calendar</button>
+          <button data-page="planner">Day Planner</button>
+          <button data-page="attendance">DL & Attendance</button>
+          <button data-page="certificates">Certificates</button>
+        </nav>
+        <div class="side-bottom">Semester 1 · 2026–27<br>Student Portal</div>
+      </aside>
+      <div class="main">
+        <div class="dash-top"><div><div class="kicker" style="color:#8a939e;margin:0 0 5px">Tuesday · 27 October 2026</div><h3 id="pageTitle">Good afternoon, Mehak.</h3></div><div class="avatar">MJ</div></div>
+        <div class="stats">
+          <div class="stat"><span>Registered events</span><strong>08</strong><em>+2 this month</em></div>
+          <div class="stat"><span>Attendance</span><strong>87%</strong><em>Healthy</em></div>
+          <div class="stat"><span>DL available</span><strong>04</strong><em>Applications</em></div>
+          <div class="stat"><span>Certificates</span><strong>12</strong><em>Archived</em></div>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-card"><h4>Attendance trend</h4><div class="bars">
+            <div class="bar" style="height:62%"></div><div class="bar" style="height:77%"></div><div class="bar" style="height:69%"></div><div class="bar" style="height:88%"></div><div class="bar" style="height:82%"></div><div class="bar" style="height:94%"></div><div class="bar" style="height:87%"></div>
+          </div><div class="legend"><span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>Now</span></div></div>
+          <div class="dash-card"><h4>Subjects</h4><div class="att">
+            <div class="att-row"><span>Mathematics</span><div class="track"><div class="fill" style="width:91%"></div></div><b>91%</b></div>
+            <div class="att-row"><span>Digital Elec.</span><div class="track"><div class="fill" style="width:86%"></div></div><b>86%</b></div>
+            <div class="att-row"><span>Biology</span><div class="track"><div class="fill" style="width:79%"></div></div><b>79%</b></div>
+            <div class="att-row danger"><span>Communication</span><div class="track"><div class="fill" style="width:71%"></div></div><b>71%</b></div>
+          </div></div>
+        </div>
+        <div class="dash-card" style="margin-top:11px"><h4>Today's plan</h4><div class="event"><div class="date">10:00</div><div><strong>Design Thinking & Innovation</strong><small>Room C-214 · Attend</small></div><span class="status green">On track</span></div><div class="event" style="margin-top:8px"><div class="date">13:30</div><div><strong>NSS Day</strong><small>Main Ground · Duty Leave submitted</small></div><span class="status">DL</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="reveal">
+  <div class="section-head"><div><div class="kicker">Support</div><h2 class="section-title">Questions,<br>without the clutter.</h2></div></div>
+  <div class="faq">
+    <div class="faq-item open"><div class="faq-q">Can I use the portal on mobile? <span>＋</span></div><div class="faq-a">Yes. The layout collapses into a mobile-first navigation and keeps calendar, planner, attendance and registration actions within thumb reach.</div></div>
+    <div class="faq-item"><div class="faq-q">How does Duty Leave fit into the planner? <span>＋</span></div><div class="faq-a">When an event overlaps a lecture, the planner marks the lecture as “Apply DL” and keeps the application state attached to that event.</div></div>
+    <div class="faq-item"><div class="faq-q">Does the portal support reduced motion? <span>＋</span></div><div class="faq-a">Yes. prefers-reduced-motion is respected: cinematic transitions fall back to simple, accessible fades.</div></div>
+    <div class="faq-item"><div class="faq-q">Where do certificates go? <span>＋</span></div><div class="faq-a">Completed event records can be stored in a searchable certificate history, keeping proof of participation in one place.</div></div>
+  </div>
+</section>
+</main>
+<footer>Campus Event Manager · CUIM concept · Designed for clarity, motion and student operations.</footer>
+
+<script>
+const canvas=document.getElementById('heroCanvas'),ctx=canvas.getContext('2d'); let W,H,dpr,particles=[];
+function resize(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}
+function seed(){particles=Array.from({length:Math.min(180,Math.floor(W/7))},()=>({x:Math.random()*W,y:Math.random()*H,v:.15+Math.random()*.55,r:.4+Math.random()*1.4,a:.12+Math.random()*.5,drift:Math.random()*Math.PI*2}))}
+function draw(t){ctx.clearRect(0,0,W,H);let g=ctx.createLinearGradient(W*.5,0,W*.5,H);g.addColorStop(0,'rgba(255,255,255,0)');g.addColorStop(.22,'rgba(255,255,255,.05)');g.addColorStop(.5,'rgba(255,255,255,.22)');g.addColorStop(.8,'rgba(255,255,255,.05)');g.addColorStop(1,'rgba(200,16,46,.025)');ctx.fillStyle=g;ctx.fillRect(W*.47,0,W*.06,H);
+let glow=ctx.createRadialGradient(W*.5,H*.48,0,W*.5,H*.48,Math.min(W,H)*.33);glow.addColorStop(0,'rgba(255,255,255,.11)');glow.addColorStop(.35,'rgba(255,255,255,.025)');glow.addColorStop(1,'transparent');ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
+for(const p of particles){p.y-=p.v;p.x+=Math.sin(t*.00045+p.drift)*.25;if(p.y<-10){p.y=H+10;p.x=Math.random()*W}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(205,211,218,${p.a})`;ctx.fill()}requestAnimationFrame(draw)}
+addEventListener('resize',()=>{resize();seed()});resize();seed();requestAnimationFrame(draw);
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+document.querySelectorAll('.tilt').forEach(card=>{card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,rx=((y/r.height)-.5)*-7,ry=((x/r.width)-.5)*7;card.style.setProperty('--mx',x+'px');card.style.setProperty('--my',y+'px');card.style.transform=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px) scale(1.02)`});card.addEventListener('pointerleave',()=>card.style.transform='')});
+document.querySelectorAll('.faq-item').forEach(item=>item.addEventListener('click',()=>{document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));item.classList.add('open')}));
+document.querySelectorAll('.side button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.side button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.getElementById('pageTitle').textContent={overview:'Good afternoon, Mehak.',calendar:'Event calendar',planner:'Your day planner',attendance:'DL & attendance',certificates:'Certificate archive'}[btn.dataset.page]||'Campus Event Manager'}));
+const nodes=[...document.querySelectorAll('.flow-node')];let idx=0;setInterval(()=>{nodes.forEach(n=>n.querySelector('circle').classList.remove('active'));nodes[idx%nodes.length].querySelector('circle').classList.add('active');idx++},1100);
+</script>
+</body>
+</html>
