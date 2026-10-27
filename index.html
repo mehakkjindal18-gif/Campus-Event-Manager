@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Campus Event Manager — a cinematic student portal for events, attendance, duty leave and certificates.">
-<title>Campus Event Manager — CUIM</title>
+<title>Campus Event Manager — CUIMS</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 :root{
@@ -27,7 +27,7 @@ a{color:inherit;text-decoration:none} button{font:inherit}
 .hero-copy{max-width:720px}
 .eyebrow{display:flex;align-items:center;gap:10px;color:#aeb5be;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
 .eyebrow i{width:28px;height:1px;background:#8e949d}
-h1{font-family:"Space Grotesk";font-size:clamp(54px,8vw,108px);line-height:.91;letter-spacing:-.065em;margin:0 0 25px;font-weight:600}
+h1{font-family:"Space Grotesk";font-size:clamp(54px,8vw,108px);line-height:.78;letter-spacing:-.065em;margin:0 0 25px;font-weight:600}
 h1 span{display:block;color:#a9afb8}
 .lead{font-size:17px;line-height:1.7;color:#aeb5be;max-width:650px}
 .cta-row{display:flex;gap:12px;margin-top:32px}.btn{border-radius:10px;padding:14px 19px;border:1px solid var(--line);cursor:pointer;transition:.25s;position:relative;overflow:hidden}
@@ -52,7 +52,7 @@ section{position:relative;max-width:1240px;margin:auto;padding:120px 30px}
 .dashboard-wrap{background:#07090c;border:1px solid var(--line);border-radius:22px;padding:12px;box-shadow:0 35px 100px rgba(0,0,0,.55)}
 .dashboard{display:grid;grid-template-columns:215px 1fr;min-height:590px;border:1px solid var(--line2);border-radius:16px;overflow:hidden;background:#f4f6f8;color:#152033}
 .side{background:#10151c;color:#d8dce2;padding:18px 13px;display:flex;flex-direction:column}.side .brand{font-size:14px;padding:8px 8px 22px}.side nav{display:flex;flex-direction:column;gap:4px}.side button{border:0;background:transparent;color:#8f98a5;text-align:left;padding:11px 10px;border-radius:8px;cursor:pointer;font-size:12px}.side button.active,.side button:hover{background:#1a222d;color:white}.side-bottom{margin-top:auto;color:#67717d;font-size:10px;padding:10px}
-.main{padding:25px 27px;overflow:hidden}.dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:23px}.dash-top h3{margin:0;font:600 23px "Space Grotesk"}.avatar{width:32px;height:32px;border-radius:50%;background:#d8dde4;display:grid;place-items:center;font-size:11px;font-weight:700}
+.main{padding:25px 27px;overflow:hidden}.portal-view{animation:viewIn .35s ease}.portal-actions{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}.mini-btn{border:1px solid #dfe3e8;background:#fff;color:#152033;border-radius:8px;padding:8px 11px;font-size:10px;cursor:pointer}.mini-btn.primary{background:#152033;color:#fff;border-color:#152033}.mini-btn:hover{transform:translateY(-1px)}.filter-row{display:flex;gap:8px;margin-bottom:12px}.filter-row select,.filter-row input{border:1px solid #dfe3e8;background:#fff;border-radius:8px;padding:9px 10px;font-size:10px;color:#334}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.cal-cell{min-height:72px;border:1px solid #e2e5e9;border-radius:7px;padding:7px;background:#fff;font-size:9px}.cal-cell strong{display:block;font-size:10px;margin-bottom:5px}.cal-cell.eventday{background:#f0f2f6}.cal-cell.today{outline:2px solid #152033}.planner-row{display:grid;grid-template-columns:65px 1fr 95px;gap:10px;align-items:center;border-bottom:1px solid #edf0f2;padding:12px 0;font-size:10px}.planner-row:last-child{border-bottom:0}.chip{display:inline-block;padding:4px 7px;border-radius:99px;font-size:8px;border:1px solid #dde1e6}.chip.good{color:#1e8e59}.chip.warn{color:#a66a00}.cert-row{display:grid;grid-template-columns:1fr 120px auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid #edf0f2;font-size:10px}.empty{padding:35px;text-align:center;color:#8a939e;font-size:11px}@keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:23px}.dash-top h3{margin:0;font:600 23px "Space Grotesk"}.avatar{width:32px;height:32px;border-radius:50%;background:#d8dde4;display:grid;place-items:center;font-size:11px;font-weight:700}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{padding:15px;border:1px solid #e0e4e9;background:#fff;border-radius:10px}.stat span{font-size:10px;color:#7b8591}.stat strong{display:block;font:600 24px "Space Grotesk";margin-top:5px}.stat em{font-style:normal;font-size:9px;color:#1e8e59}
 .dash-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:11px;margin-top:11px}.dash-card{background:#fff;border:1px solid #e0e4e9;border-radius:10px;padding:17px}.dash-card h4{margin:0 0 14px;font:600 13px "Space Grotesk"}.bars{display:flex;align-items:end;height:170px;gap:9px}.bar{flex:1;background:#1b2a5e;border-radius:5px 5px 2px 2px;min-height:8px;opacity:.9}.bar:nth-child(2n){opacity:.55}.legend{display:flex;justify-content:space-between;color:#88919d;font-size:9px;margin-top:7px}
 .att{display:flex;flex-direction:column;gap:12px}.att-row{display:grid;grid-template-columns:1fr 80px 35px;gap:8px;align-items:center;font-size:10px}.track{height:5px;border-radius:99px;background:#e8ebee;overflow:hidden}.fill{height:100%;background:#1b2a5e;border-radius:99px}.danger .fill{background:#c8102e}
@@ -138,24 +138,8 @@ footer{border-top:1px solid var(--line);padding:35px 30px;color:#68717c;font-siz
       </aside>
       <div class="main">
         <div class="dash-top"><div><div class="kicker" style="color:#8a939e;margin:0 0 5px">Tuesday · 27 October 2026</div><h3 id="pageTitle">Good afternoon, Mehak.</h3></div><div class="avatar">MJ</div></div>
-        <div class="stats">
-          <div class="stat"><span>Registered events</span><strong>08</strong><em>+2 this month</em></div>
-          <div class="stat"><span>Attendance</span><strong>87%</strong><em>Healthy</em></div>
-          <div class="stat"><span>DL available</span><strong>04</strong><em>Applications</em></div>
-          <div class="stat"><span>Certificates</span><strong>12</strong><em>Archived</em></div>
-        </div>
-        <div class="dash-grid">
-          <div class="dash-card"><h4>Attendance trend</h4><div class="bars">
-            <div class="bar" style="height:62%"></div><div class="bar" style="height:77%"></div><div class="bar" style="height:69%"></div><div class="bar" style="height:88%"></div><div class="bar" style="height:82%"></div><div class="bar" style="height:94%"></div><div class="bar" style="height:87%"></div>
-          </div><div class="legend"><span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>Now</span></div></div>
-          <div class="dash-card"><h4>Subjects</h4><div class="att">
-            <div class="att-row"><span>Mathematics</span><div class="track"><div class="fill" style="width:91%"></div></div><b>91%</b></div>
-            <div class="att-row"><span>Digital Elec.</span><div class="track"><div class="fill" style="width:86%"></div></div><b>86%</b></div>
-            <div class="att-row"><span>Biology</span><div class="track"><div class="fill" style="width:79%"></div></div><b>79%</b></div>
-            <div class="att-row danger"><span>Communication</span><div class="track"><div class="fill" style="width:71%"></div></div><b>71%</b></div>
-          </div></div>
-        </div>
-        <div class="dash-card" style="margin-top:11px"><h4>Today's plan</h4><div class="event"><div class="date">10:00</div><div><strong>Design Thinking & Innovation</strong><small>Room C-214 · Attend</small></div><span class="status green">On track</span></div><div class="event" style="margin-top:8px"><div class="date">13:30</div><div><strong>NSS Day</strong><small>Main Ground · Duty Leave submitted</small></div><span class="status">DL</span></div></div>
+        <div id="portalView" class="portal-view"></div>
+      </div>
       </div>
     </div>
   </div>
@@ -171,21 +155,46 @@ footer{border-top:1px solid var(--line);padding:35px 30px;color:#68717c;font-siz
   </div>
 </section>
 </main>
-<footer>Campus Event Manager · CUIM concept · Designed for clarity, motion and student operations.</footer>
+<footer>Campus Event Manager · Student operations.</footer>
 
 <script>
 const canvas=document.getElementById('heroCanvas'),ctx=canvas.getContext('2d'); let W,H,dpr,particles=[];
 function resize(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}
 function seed(){particles=Array.from({length:Math.min(180,Math.floor(W/7))},()=>({x:Math.random()*W,y:Math.random()*H,v:.15+Math.random()*.55,r:.4+Math.random()*1.4,a:.12+Math.random()*.5,drift:Math.random()*Math.PI*2}))}
-function draw(t){ctx.clearRect(0,0,W,H);let g=ctx.createLinearGradient(W*.5,0,W*.5,H);g.addColorStop(0,'rgba(255,255,255,0)');g.addColorStop(.22,'rgba(255,255,255,.05)');g.addColorStop(.5,'rgba(255,255,255,.22)');g.addColorStop(.8,'rgba(255,255,255,.05)');g.addColorStop(1,'rgba(200,16,46,.025)');ctx.fillStyle=g;ctx.fillRect(W*.47,0,W*.06,H);
-let glow=ctx.createRadialGradient(W*.5,H*.48,0,W*.5,H*.48,Math.min(W,H)*.33);glow.addColorStop(0,'rgba(255,255,255,.11)');glow.addColorStop(.35,'rgba(255,255,255,.025)');glow.addColorStop(1,'transparent');ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
+function draw(t){ctx.clearRect(0,0,W,H);let glow=ctx.createRadialGradient(W*.5,H*.48,0,W*.5,H*.48,Math.min(W,H)*.33);glow.addColorStop(0,'rgba(255,255,255,.11)');glow.addColorStop(.35,'rgba(255,255,255,.025)');glow.addColorStop(1,'transparent');ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
 for(const p of particles){p.y-=p.v;p.x+=Math.sin(t*.00045+p.drift)*.25;if(p.y<-10){p.y=H+10;p.x=Math.random()*W}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(205,211,218,${p.a})`;ctx.fill()}requestAnimationFrame(draw)}
 addEventListener('resize',()=>{resize();seed()});resize();seed();requestAnimationFrame(draw);
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
 document.querySelectorAll('.tilt').forEach(card=>{card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,rx=((y/r.height)-.5)*-7,ry=((x/r.width)-.5)*7;card.style.setProperty('--mx',x+'px');card.style.setProperty('--my',y+'px');card.style.transform=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px) scale(1.02)`});card.addEventListener('pointerleave',()=>card.style.transform='')});
 document.querySelectorAll('.faq-item').forEach(item=>item.addEventListener('click',()=>{document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));item.classList.add('open')}));
-document.querySelectorAll('.side button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.side button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.getElementById('pageTitle').textContent={overview:'Good afternoon, Mehak.',calendar:'Event calendar',planner:'Your day planner',attendance:'DL & attendance',certificates:'Certificate archive'}[btn.dataset.page]||'Campus Event Manager'}));
+const portalView=document.getElementById('portalView');
+const pageTitle=document.getElementById('pageTitle');
+const registered=new Set(['CTF OPS 101: Boot Camp']);
+const events=[
+ {date:'27 OCT',time:'09:30',title:'CTF OPS 101: Boot Camp',meta:'Block A · CySecSphere',seats:'42 seats'},
+ {date:'29 OCT',time:'13:00',title:'AI & Campus Futures',meta:'Auditorium · Open',seats:'120 seats'},
+ {date:'31 OCT',time:'10:00',title:'Design Thinking Studio',meta:'Innovation Lab · Open',seats:'28 seats'},
+ {date:'04 NOV',time:'13:30',title:'NSS Community Day',meta:'Main Ground · DL eligible',seats:'60 seats'}
+];
+function button(label,action,primary=false){return `<button class="mini-btn ${primary?'primary':''}" data-action="${action}">${label}</button>`}
+function renderOverview(){pageTitle.textContent='Good afternoon, Mehak.';portalView.innerHTML=`
+<div class="stats"><div class="stat"><span>Registered events</span><strong>${registered.size.toString().padStart(2,'0')}</strong><em>Live</em></div><div class="stat"><span>Attendance</span><strong>87%</strong><em>Healthy</em></div><div class="stat"><span>DL available</span><strong>04</strong><em>Applications</em></div><div class="stat"><span>Certificates</span><strong>12</strong><em>Archived</em></div></div>
+<div class="portal-actions" style="margin-top:11px">${button('Browse events','calendar',true)}${button('Open planner','planner')}${button('Check attendance','attendance')}</div>
+<div class="dash-grid"><div class="dash-card"><h4>Attendance trend</h4><div class="bars"><div class="bar" style="height:62%"></div><div class="bar" style="height:77%"></div><div class="bar" style="height:69%"></div><div class="bar" style="height:88%"></div><div class="bar" style="height:82%"></div><div class="bar" style="height:94%"></div><div class="bar" style="height:87%"></div></div><div class="legend"><span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>Now</span></div></div>
+<div class="dash-card"><h4>Subjects</h4><div class="att"><div class="att-row"><span>Mathematics</span><div class="track"><div class="fill" style="width:91%"></div></div><b>91%</b></div><div class="att-row"><span>Digital Elec.</span><div class="track"><div class="fill" style="width:86%"></div></div><b>86%</b></div><div class="att-row"><span>Biology</span><div class="track"><div class="fill" style="width:79%"></div></div><b>79%</b></div><div class="att-row danger"><span>Communication</span><div class="track"><div class="fill" style="width:71%"></div></div><b>71%</b></div></div></div></div>
+<div class="dash-card" style="margin-top:11px"><h4>Upcoming registered events</h4>${events.filter(e=>registered.has(e.title)).map(e=>eventRow(e,true)).join('')||'<div class="empty">No registrations yet.</div>'}</div>`}
+function eventRow(e,registeredHere=false){return `<div class="event"><div class="date">${e.date}<small>${e.time}</small></div><div><strong>${e.title}</strong><small>${e.meta}</small></div><span>${registeredHere?'<span class="status green">Registered</span>':button('Register','register:'+encodeURIComponent(e.title),true)}</span></div>`}
+function renderCalendar(){pageTitle.textContent='Event calendar';portalView.innerHTML=`<div class="portal-actions">${button('Overview','overview')}${button('My registrations','registered',true)}</div><div class="filter-row"><input id="eventSearch" placeholder="Search events…"><select id="eventFilter"><option>All</option><option>Registered</option><option>Open</option></select></div><div class="dash-card"><h4>October · Upcoming campus events</h4><div id="eventList">${events.map(e=>eventRow(e,registered.has(e.title))).join('')}</div></div>`}
+function renderRegistered(){pageTitle.textContent='My registrations';const rs=events.filter(e=>registered.has(e.title));portalView.innerHTML=`<div class="portal-actions">${button('← Event calendar','calendar',true)}</div><div class="dash-card"><h4>Registered events</h4>${rs.map(e=>eventRow(e,true)).join('')||'<div class="empty">You have not registered for an event yet.</div>'}</div>`}
+function renderPlanner(){pageTitle.textContent='Your day planner';const rows=[['09:00','Engineering Mathematics','Attend','good'],['10:00','Design Thinking & Innovation','Attend','good'],['11:00','Biology for Engineers','Attend','good'],['13:30','NSS Community Day','Duty Leave','warn'],['15:00','Digital Electronics','Attend','good']];portalView.innerHTML=`<div class="portal-actions">${button('Today · 27 Oct','planner',true)}${button('Event calendar','calendar')}</div><div class="dash-card"><h4>Tuesday schedule</h4>${rows.map(r=>`<div class="planner-row"><b>${r[0]}</b><span>${r[1]}</span><span class="chip ${r[3]}">${r[2]}</span></div>`).join('')}</div>`}
+function renderAttendance(){pageTitle.textContent='DL & attendance';portalView.innerHTML=`<div class="portal-actions">${button('Apply Duty Leave','dl',true)}${button('Back to overview','overview')}</div><div class="dash-card"><h4>Attendance snapshot</h4><div class="att"><div class="att-row"><span>Mathematics</span><div class="track"><div class="fill" style="width:91%"></div></div><b>91%</b></div><div class="att-row"><span>Digital Electronics</span><div class="track"><div class="fill" style="width:86%"></div></div><b>86%</b></div><div class="att-row"><span>Biology</span><div class="track"><div class="fill" style="width:79%"></div></div><b>79%</b></div><div class="att-row danger"><span>Communication Skills</span><div class="track"><div class="fill" style="width:71%"></div></div><b>71%</b></div></div></div><div class="dash-card" style="margin-top:11px"><h4>Duty Leave</h4><div class="event"><div class="date">04 NOV</div><div><strong>NSS Community Day</strong><small>13:30 · Main Ground</small></div><span class="status green">Ready to apply</span></div></div>`}
+function renderDL(){pageTitle.textContent='Duty Leave application';portalView.innerHTML=`<div class="dash-card"><h4>New Duty Leave request</h4><div class="filter-row"><input value="NSS Community Day" readonly><input value="04 Nov 2026 · 13:30" readonly></div><p style="font-size:10px;color:#77818d;line-height:1.6">This demo links the event to your timetable and marks the overlapping lecture for Duty Leave.</p>${button('Submit application','submitDL',true)} ${button('Cancel','attendance')}</div>`}
+function renderCertificates(){pageTitle.textContent='Certificate archive';portalView.innerHTML=`<div class="portal-actions">${button('Back to overview','overview')}${button('Download selected','download',true)}</div><div class="dash-card"><h4>12 certificates</h4>${['CTF OPS 101: Boot Camp','NSS Day 2026','Innovation Challenge','Cybersecurity Awareness Week'].map((x,i)=>`<div class="cert-row"><span><strong>${x}</strong><small style="display:block;color:#8a939e;margin-top:3px">Issued ${12-i} days ago</small></span><span class="status green">Verified</span>${button('View','viewCert:'+encodeURIComponent(x))}</div>`).join('')}</div>`}
+function navigate(page){document.querySelectorAll('.side button').forEach(x=>x.classList.toggle('active',x.dataset.page===page));({overview:renderOverview,calendar:renderCalendar,registered:renderRegistered,planner:renderPlanner,attendance:renderAttendance,dl:renderDL,certificates:renderCertificates}[page]||renderOverview)()}
+document.querySelectorAll('.side button').forEach(btn=>btn.addEventListener('click',()=>navigate(btn.dataset.page)));
+portalView.addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(!b)return;const a=b.dataset.action;if(a.startsWith('register:')){registered.add(decodeURIComponent(a.slice(9)));navigate('calendar');alert('Registration confirmed.');}else if(a==='submitDL'){alert('Duty Leave application submitted for review.');navigate('attendance')}else if(a.startsWith('viewCert:')){alert('Certificate preview: '+decodeURIComponent(a.slice(9)))}else if(a==='download'){alert('Selected certificates prepared for download (demo).')}else navigate(a)});
+renderOverview();
 const nodes=[...document.querySelectorAll('.flow-node')];let idx=0;setInterval(()=>{nodes.forEach(n=>n.querySelector('circle').classList.remove('active'));nodes[idx%nodes.length].querySelector('circle').classList.add('active');idx++},1100);
 </script>
 </body>
