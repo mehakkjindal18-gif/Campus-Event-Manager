@@ -197,5 +197,7 @@ portalView.addEventListener('click',e=>{const b=e.target.closest('[data-action]'
 renderOverview();
 const nodes=[...document.querySelectorAll('.flow-node')];let idx=0;setInterval(()=>{nodes.forEach(n=>n.querySelector('circle').classList.remove('active'));nodes[idx%nodes.length].querySelector('circle').classList.add('active');idx++},1100);
 </script>
+  <script src="campus.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
