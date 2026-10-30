@@ -1,0 +1,25 @@
+name: Build WebAssembly
+on:
+  push:
+    paths: ['campus.c']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mymindstorm/setup-emsdk@v14
+      - name: Compile C to WebAssembly
+        run: >
+          emcc campus.c -O2 -o campus.js
+          -s MODULARIZE=1 -s EXPORT_NAME=createCampus
+          -s EXPORTED_RUNTIME_METHODS='["cwrap","ccall","UTF8ToString","stringToUTF8","lengthBytesUTF8"]'
+      - name: Save the build into the repo
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add campus.js campus.wasm
+          git commit -m "Build WebAssembly" || exit 0
+          git push
